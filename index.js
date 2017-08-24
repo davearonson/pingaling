@@ -17,7 +17,8 @@ function restore_icon() { tray.setImage(images[cur_img_idx]) }
 function show_notice() {
   notice_num += 1
   notify('This is notification #' + notice_num + '!',
-    { body: 'See? Really easy to use!' },
+    { body: 'See? Really easy to use!',
+      silent: true },
     () => { console.log('The notification got clicked on!') })
 }
 
