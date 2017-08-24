@@ -14,6 +14,13 @@ function toggle_icon() {
 function whiten_icon() { tray.setImage('tray_icon_white.png') }
 function restore_icon() { tray.setImage(images[cur_img_idx]) }
 
+function show_notice() {
+  notice_num += 1
+  notify('This is notification #' + notice_num + '!',
+    { body: 'See? Really easy to use!' },
+    () => { console.log('The notification got clicked on!') })
+}
+
 app.on('ready', () => {
   images = ['tray_icon_black.png', 'tray_icon_purple.png']
   cur_img_idx = 0
@@ -31,7 +38,6 @@ app.on('ready', () => {
   tray.setContextMenu(contextMenu)
   tray.on('mouse-enter', whiten_icon)
   tray.on('mouse-leave', restore_icon)
-  notify('This is a notification!',
-         { body: 'See? Really easy to use!' },
-         () => { console.log('The notification got clicked on!') })
+  notice_num = 1
+  setInterval(show_notice, 1000)
 })
