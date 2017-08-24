@@ -1,5 +1,6 @@
 const {app, Menu, MenuItem, Tray} = require('electron')
 const notify = require('electron-main-notification')
+const path = require('path')
 
 let tray = null
 
@@ -18,7 +19,8 @@ function show_notice() {
   notice_num += 1
   notify('This is notification #' + notice_num + '!',
     { body: 'See? Really easy to use!',
-      silent: true },
+      silent: true,
+      icon: path.join(__dirname, images[cur_img_idx]) },
     () => { console.log('The notification got clicked on!') })
 }
 
