@@ -1,0 +1,23 @@
+{
+  "name": "pingaling",
+  "version": "1.0.0",
+  "description": "My Ping-a-Ling, for you to play with",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davearonson/pingaling.git"
+  },
+  "author": "Dave Aronson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davearonson/pingaling/issues"
+  },
+  "homepage": "https://github.com/davearonson/pingaling#readme",
+  "devDependencies": {
+    "electron": "^1.7.5",
+    "standard": "^10.0.3"
+  }
+}
