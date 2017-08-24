@@ -3,10 +3,18 @@ const {app, Menu, MenuItem, Tray} = require('electron')
 let tray = null
 
 function write_to_log() { console.log('clicked the button') }
+// weird scoping... i wouldn't have thought this would work!
+function toggle_icon() {
+  cur_img_idx = 1 - cur_img_idx
+  tray.setImage(images[cur_img_idx])
+}
 
 app.on('ready', () => {
-  tray = new Tray('tray_icon_black.png')
+  images = ['tray_icon_black.png', 'tray_icon_purple.png']
+  cur_img_idx = 0
+  tray = new Tray(images[cur_img_idx])
   const contextMenu = Menu.buildFromTemplate([
+    {label: 'Toggle Icon', click: toggle_icon},
     {label: 'Log', click: write_to_log},
     {label: 'Quit', role: 'quit'},
     {label: 'Item1', type: 'radio'},
