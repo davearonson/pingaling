@@ -1,8 +1,10 @@
 const {app, Menu, MenuItem, Tray} = require('electron')
+const notify = require('electron-main-notification')
 
 let tray = null
 
 function write_to_log() { console.log('clicked the button') }
+
 // weird scoping... i wouldn't have thought this would work!
 function toggle_icon() {
   cur_img_idx = 1 - cur_img_idx
@@ -29,4 +31,7 @@ app.on('ready', () => {
   tray.setContextMenu(contextMenu)
   tray.on('mouse-enter', whiten_icon)
   tray.on('mouse-leave', restore_icon)
+  notify('This is a notification!',
+         { body: 'See? Really easy to use!' },
+         () => { console.log('The notification got clicked on!') })
 })
