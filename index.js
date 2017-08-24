@@ -6,8 +6,11 @@ function write_to_log() { console.log('clicked the button') }
 // weird scoping... i wouldn't have thought this would work!
 function toggle_icon() {
   cur_img_idx = 1 - cur_img_idx
-  tray.setImage(images[cur_img_idx])
+  restore_icon
 }
+
+function whiten_icon() { tray.setImage('tray_icon_white.png') }
+function restore_icon() { tray.setImage(images[cur_img_idx]) }
 
 app.on('ready', () => {
   images = ['tray_icon_black.png', 'tray_icon_purple.png']
@@ -24,5 +27,6 @@ app.on('ready', () => {
   ])
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
+  tray.on('mouse-enter', whiten_icon)
+  tray.on('mouse-leave', restore_icon)
 })
-
