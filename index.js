@@ -4,6 +4,7 @@ let tray = null
 app.on('ready', () => {
   tray = new Tray('tray_icon_black.png')
   const contextMenu = Menu.buildFromTemplate([
+    {label: 'Quit', role: 'quit'},
     {label: 'Item1', type: 'radio'},
     {label: 'Item2', type: 'radio'},
     {label: 'Item3', type: 'radio', checked: true},
